@@ -9,6 +9,8 @@ import io.reactivex.rxjava3.annotations.NonNull
 import io.reactivex.rxjava3.core.*
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.lang.Error
+import java.lang.Exception
 import java.util.concurrent.TimeUnit
 import kotlin.math.sin
 
@@ -54,7 +56,11 @@ class MainActivity : AppCompatActivity() {
         //useOfRepeat()
         //useOfRepeatUntil()
         //sortedOperator()
-        useOfDelayOperator()
+        //useOfDelayOperator()
+        //useOfContainOperator()
+
+        //for error handling in rxjava go through this link
+        // -> https://android.jlelse.eu/error-handling-in-rxjava-rxkotlin-e960300990e0
     }
 
     /**
@@ -702,6 +708,17 @@ class MainActivity : AppCompatActivity() {
                 .delay(5000,TimeUnit.MILLISECONDS)
                 .subscribe {
                     Log.d("RxJava ", it.toString())
+                }
+    }
+
+    /**
+     * It prints boolean based on whether the value is present or not
+     */
+    private fun useOfContainOperator() {
+        Observable.just(1,2,3,4,5)
+                .contains(2)
+                .subscribe{ result ->
+                    Log.d("RxJava ", result.toString())
                 }
     }
 
